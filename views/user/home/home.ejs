@@ -1,0 +1,18 @@
+<% const rootpath= '../../' %>
+<%- include(rootpath+'includes/start.ejs') %>
+  <%- include(rootpath+'includes/head.ejs') %>
+    <%- include(rootpath+'includes/navigation.ejs') %>
+    
+    <main>
+      <div class="banner-image">
+        <% if (user?.roleid==1) { %>
+          <img class="overflow-hidden" src="https://elements-cover-images-0.imgix.net/99476cfe-8363-46b5-8cc8-415967e8cedb?auto=compress&crop=edges&fit=crop&fm=jpeg&h=800&w=1200&s=16853386f991ddfcbac86a0e22fa8b3f" alt="" height="550" width="1365">
+        <% } else { %>
+          <img class="overflow-hidden" src="https://1.bp.blogspot.com/-2YueQRqKiEQ/X6fElv0BNuI/AAAAAAAAFYM/YClYXOXL7cEjINXiv-9smxritAXRtA-JQCLcBGAsYHQ/s2048/1533.jpg" alt="" height="550" width="1365">
+          <%}  %>
+      </div>
+    </main>
+  <%- include(`${rootpath}includes/script.ejs`) %>
+<%- include(`${rootpath}includes/end.ejs`) %>
+
+

@@ -1,0 +1,45 @@
+.section-header h1{
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+.section-header{
+    margin: 30px 0;
+}
+.section-header h1:after{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background-color: #000000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+
+}
+.pannel-action{
+    position: absolute;
+    visibility: hidden;
+}
+.pannel-card{
+position: relative;
+}
+.pannel-card:hover .pannel-img{
+opacity: 50%;
+}
+.pannel-card:hover .pannel-action{
+visibility: visible;
+}
+.heading-section h1{
+    position: relative;
+}
+.heading-section::after{
+    content: "";
+    position: absolute;
+    background-color: #000000;
+    width: 50px;
+    height: 3px;
+    
+}

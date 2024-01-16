@@ -1,0 +1,46 @@
+<% const rootpath= '../../'
+
+%>
+<%- include(rootpath+'includes/start.ejs') %>
+  <%- include(rootpath+'includes/head.ejs') %>
+    <%- include(rootpath+'includes/navigation.ejs') %>
+
+    <main>
+        <div class="form-section">
+            <div class="container">
+       <div class="section-header">
+        <h1>Add Product</h1>
+       </div>
+       
+        <form class="border p-4 rounded-4" action="/addproduct" method="post">
+        <div class="mb-2">
+            <label for="FormControlInput" class="form-label">Product Name</label>
+            <input class="form-control" type="text" id="FormControlInput" placeholder="Clothes" name="name">
+        </div>
+        <div  class="mb-2" >
+            <label for="FormControlTextarea"  class="form-label">Description</label>
+           <textarea class="form-control" name="description" placeholder="Desription" id="FormControlTextarea" cols="30" rows="10"></textarea> 
+        </div>
+        <div class="mb-2">
+            <label for="FormControlPrice"  class="form-label">Price</label>
+            <input class="form-control" step="0.01" type="number" id="FormControlPrice" placeholder="0.00"  name="price">
+        </div>
+        <div class="mb-2">
+            <label for="FormControlUrl"  class="form-label">ImageURL</label>
+            <input class="form-control" type="text" id="FormControlUrl" placeholder="https/" name="imageUrl">
+        </div>
+        <div class="mb-2">
+            <label for="FormControlbannerurl"  class="form-label">Banner ImageURL</label>
+            <input class="form-control" type="text" id="FormControlbannerurl" placeholder="https/" name="bannerimageUrl">
+        </div>
+        <div class="action text-center">
+            <button class="btn btn-primary my-4" type="submit">Submit</button>
+        </div>
+        </form>
+    </div>
+</div>
+    </main>
+    <%- include(`${rootpath}includes/script.ejs`) %>
+<%- include(`${rootpath}includes/end.ejs`) %>
+    
+    
