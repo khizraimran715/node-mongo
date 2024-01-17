@@ -1,17 +1,17 @@
 const cartmodel=require('../../model/cart')
 exports.getcart= async(req,res)=>{
-    const userid='6595918be554a615a68ec634';
-    const cart=await cartmodel.findOne({userId:userid}).populate({
+    const user=req.session.user;
+    const cart=await cartmodel.findOne({userId:user._id}).populate({
         path: 'items.productId',
         model:'product'
     });
     //res.json(cart.items);
-    res.render('user/cart/cart',{pageTitle:"cart", cartitems:cart.items})
+    res.render('user/cart/cart',{pageTitle:"cart", cartitems:cart?.items})
 }
 exports.addtocart=async(req,res)=>{
-    const userid='6595918be554a615a68ec634';
+    const user=req.session.user;
     const productid=req.params.productid;
-    const cart= await cartmodel.findOne({userId:userid});
+    const cart= await cartmodel.findOne({userId:user._id});
     if (cart) {
         const item=cart.items.find(x=>x.productId.toString()===productid);
         if (item) {
@@ -38,7 +38,7 @@ exports.addtocart=async(req,res)=>{
                 productId:productid
             }
         }
-        cartmodel.create(cart)
+        cartmodel.create(newcart)
         .then(()=>{
             res.redirect('/cart')
         })
@@ -53,8 +53,8 @@ exports.addtocart=async(req,res)=>{
 
 exports.removefromcart=async (req,res)=>{
 const productid=req.params.productid;
-const userid='6595918be554a615a68ec634';
-const cart=await cartmodel.findOne({userId:userid});
+const user=req.session.user;
+const cart=await cartmodel.findOne({userId:user._id});
 if (cart) {
     cart.items=cart.items.filter(x=>x.productId.toString()!==productid);
     await cart.save()

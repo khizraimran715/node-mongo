@@ -1,6 +1,6 @@
 const express=require('express')
 const session = require('express-session');
-const MongoStore = require('mongoose-express-session')(session);
+const MongoStore = require('connect-mongodb-session')(session);
 const path=require('path')
 const mongoose = require('mongoose');
 const product=require('./model/product')
@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:false}))
 
 const store=new MongoStore({
-    connection:mongoose.connection,
+    uri:connectionString,
     collection:'session'
 });
 
